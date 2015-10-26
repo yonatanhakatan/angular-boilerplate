@@ -13,9 +13,9 @@ $max-width: 1200px !default;
 /// @prop {Map} values - Values are actual breakpoints expressed in em
 /// @see {mixin} respond-to
 $breakpoints: (
-  'small' 35em,
-  'medium' 47em,
-  'large' 75em,
+    'small' 35em,
+    'medium' 47em,
+    'large' 75em
 ) !default;
 
 // Output styles at a fixed size - set in main Sass file

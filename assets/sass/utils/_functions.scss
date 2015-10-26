@@ -8,7 +8,7 @@
 /// @param {String} $path - asset path
 /// @return {Url}
 @function asset($base, $type, $path) {
-  @return url($base + $type + $path);
+    @return url($base + $type + $path);
 }
 
 /// Returns URL to an image based on its path
@@ -17,7 +17,7 @@
 /// @return {Url}
 /// @require $base-url
 @function image($path, $base: $base-url) {
-  @return asset($base, $image-path, $path);
+    @return asset($base, $image-path, $path);
 }
 
 /// Returns URL to a font based on its path
@@ -26,7 +26,7 @@
 /// @return {Url}
 /// @require $base-url
 @function font($path, $base: $base-url) {
-  @return asset($base, $font-path, $path);
+    @return asset($base, $font-path, $path);
 }
 
 // Search a list of lists ($haystack) for value ($needle) at the first position.
@@ -34,16 +34,16 @@
 // Based on breakup-list-key-search mixin by @BPScott - (https://github.com/bpscott/breakup)
 @function get-list-value($haystack, $needle) {
 
-	@each $haystack-item in $haystack {
-		@if $needle == nth($haystack-item, 1) {
-			@return nth($haystack-item, 2);
-		}
-	}
+    @each $haystack-item in $haystack {
+        @if $needle == nth($haystack-item, 1) {
+            @return nth($haystack-item, 2);
+        }
+    }
 
-	@return false;
+    @return false;
 }
 
 @function calculate-rem($size) {
-	$remSize: $size / 16px;
-	@return $remSize * 1rem;
+    $remSize: $size / 16px;
+    @return $remSize * 1rem;
 }
