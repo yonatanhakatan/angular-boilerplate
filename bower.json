@@ -1,0 +1,11 @@
+{
+	"name": "angular-boilerplate",
+	"version": "0.1.0",
+	"description": "Boilerplate for AngularJS",
+	"author": "Jonny Levy",
+	"license": "MIT",
+	"homepage": "https://github.com/yonatanhakatan/angular-boilerplate",
+	"dependencies": {
+		"angular": "^1.4.7"
+	}
+}

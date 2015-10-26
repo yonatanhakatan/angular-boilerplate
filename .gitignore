@@ -9,4 +9,7 @@ Thumbs.db
 bower_components
 
 # Npm
-node_modules/
+node_modules
+
+# Generated folders
+public
