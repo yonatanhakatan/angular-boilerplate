@@ -3,11 +3,11 @@
 
     angular
         .module('app.samplefeature')
-        .config(sampleFeatureRoutesConfig);
+        .config(routesConfig);
 
-    sampleFeatureRoutesConfig.$inject = ['$stateProvider', 'corePathsConstant'];
+    routesConfig.$inject = ['$stateProvider', 'corePathsConstant'];
 
-    function sampleFeatureRoutesConfig($stateProvider, corePathsConstant) {
+    function routesConfig($stateProvider, corePathsConstant) {
         $stateProvider
             .state('samplefeature', {
                 controller: 'SampleFeatureController',
