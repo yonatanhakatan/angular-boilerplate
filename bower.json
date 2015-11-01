@@ -6,6 +6,7 @@
     "license": "MIT",
     "homepage": "https://github.com/yonatanhakatan/angular-boilerplate",
     "dependencies": {
-        "angular": "^1.4.7"
+        "angular": "^1.4.7",
+        "angular-ui-router": "^0.2.15"
     }
 }

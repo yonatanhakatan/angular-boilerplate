@@ -75,7 +75,8 @@ gulp.task('styles', function() {
 gulp.task('vendor-scripts', ['bower'], function() {
   return gulp
             .src([
-                bowerFolder + 'angular/angular.min.js'
+                bowerFolder + 'angular/angular.min.js',
+                bowerFolder + 'angular-ui-router/release/angular-ui-router.min.js'
             ])
             .pipe(plugins.plumber())
             .pipe(plugins.concat('vendor.js'))
