@@ -1,11 +1,11 @@
 (function() {
-    angular
-        .module('app.samplefeature')
-        .controller('SampleFeatureController', SampleFeatureController);
+  angular
+    .module('app.samplefeature')
+    .controller('SampleFeatureController', SampleFeatureController);
 
-    SampleFeatureController.$inject = [];
+  SampleFeatureController.$inject = [];
 
-    function SampleFeatureController() {
-        var vm = this;
-    }
+  function SampleFeatureController() {
+    var vm = this;
+  }
 })();

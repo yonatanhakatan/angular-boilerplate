@@ -1,9 +1,9 @@
 (function() {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('app.core')
-        .constant('corePathsConstant', {
-            PARTIALS: '/_ng-partials/'
-        });
+  angular
+    .module('app.core')
+    .constant('corePathsConstant', {
+      PARTIALS: '/_ng-partials/'
+    });
 })();

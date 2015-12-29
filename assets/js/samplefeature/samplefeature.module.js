@@ -1,9 +1,9 @@
 (function() {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('app.samplefeature', [
-            'app.core',
-            'ui.router'
-        ]);
+  angular
+    .module('app.samplefeature', [
+      'app.core',
+      'ui.router'
+    ]);
 })();

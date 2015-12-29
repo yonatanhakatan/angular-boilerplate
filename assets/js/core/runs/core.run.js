@@ -1,13 +1,13 @@
 (function() {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('app.core')
-        .run(runBlock);
+  angular
+    .module('app.core')
+    .run(runBlock);
 
-    runBlock.$inject = ['coreBootService'];
+  runBlock.$inject = ['coreBootService'];
 
-    function runBlock(coreBootService) {
-        coreBootService.init();
-    }
+  function runBlock(coreBootService) {
+    coreBootService.init();
+  }
 })();

@@ -1,19 +1,19 @@
 (function() {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('app.core')
-        .service('coreBootService', coreBootService);
+  angular
+    .module('app.core')
+    .service('coreBootService', coreBootService);
 
-    coreBootService.$inject = [];
+  coreBootService.$inject = [];
 
-    function coreBootService() {
-        /*jshint validthis: true */
-        this.init = init;
+  function coreBootService() {
+    /*jshint validthis: true */
+    this.init = init;
 
-        function init() {
-            // Tasks that need to happen when the
-            // app launches should be written here
-        }
+    function init() {
+      // Tasks that need to happen when the
+      // app launches should be written here
     }
+  }
 })();
