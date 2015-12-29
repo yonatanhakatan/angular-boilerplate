@@ -6,9 +6,9 @@ var runSequence = require('run-sequence');
 /**
  * Paths
  */
-var bowerFolder = "bower_components/";
-var destFolder = "public/";
-var srcFolder = "assets/";
+var bowerFolder = 'bower_components/';
+var destFolder = 'public/';
+var srcFolder = 'assets/';
 
 
 /**
@@ -24,7 +24,7 @@ gulp.task('clean', function(cb) {
     destFolder + '_data'
   ], cb)
 
-  return gulp.pipe( plugins.if( isMac, plugins.notify('Clean task complete') ) );
+  return gulp.pipe(plugins.if(isMac, plugins.notify('Clean task complete')));
 });
 
 /**
@@ -41,7 +41,7 @@ gulp.task('clean-dev', function(cb) {
     destFolder + '_data'
   ], cb)
 
-  return gulp.pipe( plugins.if( isMac, plugins.notify('Clean (dev) task complete') ) );
+  return gulp.pipe(plugins.if(isMac, plugins.notify('Clean (dev) task complete')));
 });
 
 /**
@@ -57,14 +57,14 @@ gulp.task('bower', function() {
 gulp.task('styles', function() {
   return gulp
     .src(srcFolder + 'sass/style.scss')
-    .pipe(plugins.sass({ errLogToConsole: true }))
+    .pipe(plugins.sass({errLogToConsole: true}))
     .pipe(plugins.plumber())
     .pipe(plugins.autoprefixer({
       browsers: ['last 2 versions', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4']
     }))
     .pipe(gulp.dest(destFolder + '_css/'))
-    .pipe(plugins.minifyCss({ keepSpecialComments: 0 }))
-    .pipe(plugins.rename({ extname: '.min.css' }))
+    .pipe(plugins.minifyCss({keepSpecialComments: 0}))
+    .pipe(plugins.rename({extname: '.min.css'}))
     .pipe(gulp.dest(destFolder + '_css/'));
 });
 
@@ -92,11 +92,14 @@ gulp.task('vendor-scripts', ['bower'], function() {
 gulp.task('scripts', function() {
   return gulp
     .src([
-      srcFolder + 'js/**/*.js'
+      srcFolder + 'js/**/*.js',
+      '!' + srcFolder + '**/tests/**/*'
     ])
     .pipe(plugins.plumber())
     .pipe(plugins.jshint())
     .pipe(plugins.jshint.reporter('default'))
+    .pipe(plugins.jscs())
+    .pipe(plugins.jscs.reporter())
     .pipe(plugins.concat('site.js'))
     .pipe(gulp.dest(destFolder + '_js/site/'))
     .pipe(plugins.uglify())
@@ -175,7 +178,15 @@ gulp.task('watch', function() {
  * Default task. Runs all other tasks.
  */
 gulp.task('default', ['clean'], function() {
-  return runSequence('vendor-scripts', 'scripts', 'styles', 'copy-images', 'copy-fonts', 'copy-ng-partials', 'copy-data');
+  return runSequence(
+    'vendor-scripts',
+    'scripts',
+    'styles',
+    'copy-images',
+    'copy-fonts',
+    'copy-ng-partials',
+    'copy-data'
+  );
 });
 
 /**
@@ -183,5 +194,12 @@ gulp.task('default', ['clean'], function() {
  * Requires 'vendor-scripts' task to have been run once first.
  */
 gulp.task('dev', ['clean-dev'], function() {
-  return runSequence('scripts', 'styles', 'copy-images', 'copy-fonts', 'copy-ng-partials', 'copy-data');
+  return runSequence(
+    'scripts',
+    'styles',
+    'copy-images',
+    'copy-fonts',
+    'copy-ng-partials',
+    'copy-data'
+  );
 });
