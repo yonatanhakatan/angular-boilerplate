@@ -2,6 +2,7 @@ var del = require('del');
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
+var Server = require('karma').Server;
 
 /**
  * Paths
@@ -108,6 +109,28 @@ gulp.task('scripts', function() {
 });
 
 /**
+ * Run test once and exit
+ */
+gulp.task('test', function (done) {
+  return new Server({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, function() {
+    done();
+  }).start();
+});
+
+/**
+ * Run scripts then test
+ */
+gulp.task('tested-scripts', function (done) {
+  return runSequence(
+    'scripts',
+    'test'
+  );
+});
+
+/**
  * Copy images from src to dest
  */
 gulp.task('copy-images', function() {
@@ -155,7 +178,7 @@ gulp.task('watch', function() {
   gulp.watch(srcFolder + 'scss/**/*.scss', ['styles']);
 
   // Watch .js files
-  gulp.watch(srcFolder + 'js/**/*.js', ['scripts']);
+  gulp.watch(srcFolder + 'js/**/*.js', ['tested-scripts']);
 
   // Watch Angular partials
   gulp.watch(srcFolder + 'ng-partials/**/*.html', ['copy-ng-partials']);
@@ -195,7 +218,7 @@ gulp.task('default', ['clean'], function() {
  */
 gulp.task('dev', ['clean-dev'], function() {
   return runSequence(
-    'scripts',
+    'tested-scripts',
     'styles',
     'copy-images',
     'copy-fonts',

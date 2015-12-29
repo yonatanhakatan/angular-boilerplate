@@ -13,3 +13,6 @@ node_modules
 
 # Generated folders
 public
+
+# Karma Coverage (Istanbul)
+coverage
