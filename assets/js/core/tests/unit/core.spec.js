@@ -1,4 +1,4 @@
-describe('Testing Core', function() {
+describe('Core module', function() {
   var coreBootService;
 
   beforeEach(function() {
