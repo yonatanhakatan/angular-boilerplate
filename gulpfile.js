@@ -17,13 +17,8 @@ var srcFolder = 'assets/';
  */
 gulp.task('clean', function(cb) {
   return del([
-    destFolder + '_js',
-    destFolder + '_css',
-    destFolder + '_img',
-    destFolder + '_fonts',
-    destFolder + '_ng-partials',
-    destFolder + '_data'
-  ], cb)
+    destFolder + '*'
+  ], {dot: true}, cb)
 
   return gulp.pipe(plugins.if(isMac, plugins.notify('Clean task complete')));
 });
@@ -34,13 +29,11 @@ gulp.task('clean', function(cb) {
  */
 gulp.task('clean-dev', function(cb) {
   return del([
-    destFolder + '_js/site',
-    destFolder + '_css',
-    destFolder + '_img',
-    destFolder + '_fonts',
-    destFolder + '_ng-partials',
-    destFolder + '_data'
-  ], cb)
+    destFolder + '*',
+    destFolder + '_js/site/**',
+    '!' + destFolder + '_js',
+    '!' + destFolder + '_js/vendor/**'
+  ], {dot: true}, cb)
 
   return gulp.pipe(plugins.if(isMac, plugins.notify('Clean (dev) task complete')));
 });
@@ -182,6 +175,15 @@ gulp.task('copy-data', function() {
     .pipe(gulp.dest(destFolder + '_data'));
 });
 
+/**
+ * Copy root files from src to dest
+ */
+gulp.task('copy-root', function() {
+  return gulp
+    .src(srcFolder + 'root/**/*', {dot: true})
+    .pipe(gulp.dest(destFolder));
+});
+
 
 /**
  * Watch various files and run appropriate task
@@ -208,6 +210,9 @@ gulp.task('watch', function() {
   // Watch data files
   gulp.watch(srcFolder + 'data/**/*', ['copy-data']);
 
+  // Watch root files
+  gulp.watch(srcFolder + 'root/**/*', ['copy-root']);
+
   // Watch bower files
   gulp.watch('bower.json', ['vendor-scripts']);
 
@@ -224,7 +229,8 @@ gulp.task('default', ['clean'], function() {
     'copy-images',
     'copy-fonts',
     'copy-ng-partials',
-    'copy-data'
+    'copy-data',
+    'copy-root'
   );
 });
 
@@ -239,6 +245,7 @@ gulp.task('dev', ['clean-dev'], function() {
     'copy-fonts',
     'copy-ng-partials',
     'copy-data',
+    'copy-root',
     'tested-scripts'
   );
 });

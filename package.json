@@ -11,7 +11,7 @@
   "homepage": "https://github.com/yonatanhakatan/angular-boilerplate",
   "devDependencies": {
     "bower": "^1.6.4",
-    "del": "^2.0.2",
+    "del": "^2.2.0",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-bower": "^0.0.10",

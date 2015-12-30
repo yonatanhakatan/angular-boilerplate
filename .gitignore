@@ -11,8 +11,8 @@ bower_components
 # Npm
 node_modules
 
-# Generated folders
-public/_*
+# Public folder
+public
 
 # Karma Coverage (Istanbul)
 coverage
