@@ -9,6 +9,10 @@ module.exports = function(config) {
       'assets/js/**/*.js'
     ],
 
+    exclude: [
+      'assets/js/**/e2e/**/*.js'
+    ],
+
     preprocessors: {
       'assets/js/**/!(tests)/**/*.js': ['coverage']
     },

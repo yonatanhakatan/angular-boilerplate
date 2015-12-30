@@ -109,9 +109,9 @@ gulp.task('scripts', function() {
 });
 
 /**
- * Run test once and exit
+ * Karma Tests
  */
-gulp.task('test', function (done) {
+gulp.task('test-karma', function(done) {
   return new Server({
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
@@ -121,12 +121,28 @@ gulp.task('test', function (done) {
 });
 
 /**
+ * Protractor Tests
+ */
+gulp.task('test-protractor', function(done) {
+  return gulp
+    .src(['assets/js/**/tests/e2e/**/*.js'])
+    .pipe(plugins.protractor.protractor({
+      configFile: 'protractor.conf.js'
+    }))
+    .on('error', function() {
+      done();
+    });
+});
+
+/**
  * Run scripts then test
  */
-gulp.task('tested-scripts', function (done) {
+gulp.task('tested-scripts', function(done) {
   return runSequence(
     'scripts',
-    'test'
+    'test-karma',
+    'test-protractor',
+    done
   );
 });
 
@@ -218,11 +234,11 @@ gulp.task('default', ['clean'], function() {
  */
 gulp.task('dev', ['clean-dev'], function() {
   return runSequence(
-    'tested-scripts',
     'styles',
     'copy-images',
     'copy-fonts',
     'copy-ng-partials',
-    'copy-data'
+    'copy-data',
+    'tested-scripts'
   );
 });
