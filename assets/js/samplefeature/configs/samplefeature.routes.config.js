@@ -9,11 +9,17 @@
 
   function routesConfig($stateProvider, corePathsConstant) {
     $stateProvider
-      .state('samplefeature', {
+      .state('sampleFeaturePage1', {
         controller: 'SampleFeatureController',
         controllerAs: 'vm',
-        templateUrl: corePathsConstant.PARTIALS + 'samplefeature/index.html',
-        url: ''
+        templateUrl: corePathsConstant.PARTIALS + 'samplefeature/page1.html',
+        url: '/'
+      })
+      .state('sampleFeaturePage2', {
+        controller: 'SampleFeatureController',
+        controllerAs: 'vm',
+        templateUrl: corePathsConstant.PARTIALS + 'samplefeature/page2.html',
+        url: 'page2'
       });
   }
 })();
