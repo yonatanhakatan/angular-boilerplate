@@ -2,8 +2,15 @@
   "name": "angular-boilerplate",
   "version": "0.1.0",
   "description": "Boilerplate for AngularJS",
-  "author": "Jonny Levy",
+  "authors": [
+    "Jonny Levy"
+  ],
   "license": "MIT",
+  "keywords": [
+    "angular",
+    "angularjs",
+    "boilerplate"
+  ],
   "homepage": "https://github.com/yonatanhakatan/angular-boilerplate",
   "dependencies": {
     "angular": "^1.3.7",
