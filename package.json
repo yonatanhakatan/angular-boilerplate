@@ -35,6 +35,6 @@
     "superstatic": "^4.0.0"
   },
   "scripts": {
-    "test": "gulp test --verbose"
+    "test": "gulp tested-scripts --verbose"
   }
 }
